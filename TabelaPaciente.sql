@@ -14,7 +14,6 @@ uf CHAR(2) NOT NULL,
 dataNascimento DATETIME NOT NULL,
 
 CONSTRAINT ch_uf CHECK (uf IN ('AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'))
-
 );
 
 CREATE TABLE especialidade (
@@ -66,4 +65,54 @@ resultado VARCHAR(255),
 dataResultado DATETIME,
 dataRetirada DATETIME,
 responsavelRetirada VARCHAR(100)
+);
+
+CREATE TABLE consulta (
+idConsulta INT PRIMARY KEY AUTO_INCREMENT,
+idPaciente INT NOT NULL,
+idMedico INT NOT NULL,
+idRecepecionista INT NOT NULL, 
+tipoConsulta VARCHAR(150),
+valor DECIMAL(10,2),
+dataHoraConsulta DATETIME,
+Obeservacao VARCHAR(255),
+prescricao VARCHAR(255),
+temPlano BIT NOT NULL
+);
+
+CREATE TABLE exameFormaPagamento (
+idExameFormaPagamento INT PRIMARY KEY AUTO_INCREMENT,
+idExame INT NOT NULL,
+idFormaPagamento INT NOT NULL,
+valor DECIMAL(10,2) NOT NULL,
+qtdVezes INT
+);
+
+CREATE TABLE formaPagamento (
+idFormaPagamento INT PRIMARY KEY AUTO_INCREMENT,
+nomeFormaPagamento VARCHAR(100)
+);
+
+CREATE TABLE consultaFormaPagamento(
+idConsultaFormaPagamento INT PRIMARY KEY AUTO_INCREMENT,
+idConsulta INT NOT NULL,
+idFormaPagamento INT NOT NULL,
+valor DECIMAL(10,2) NOT NULL,
+qtdVezes INT
+);
+
+CREATE TABLE consultaPlano (
+idConsulta INT PRIMARY KEY,
+idPlanoSaude INT NOT NULL
+);
+
+CREATE TABLE planoSaude(
+idPlanoSaude INT PRIMARY KEY AUTO_INCREMENT,
+nomePlanoSaude VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE categoriaPlano (
+idCategoriaPlano INT PRIMARY KEY AUTO_INCREMENT,
+idPlanoSaude INT NOT NULL,
+nomeCategoriaPlano VARCHAR(100) NOT NULL
 );
