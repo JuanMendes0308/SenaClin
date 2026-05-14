@@ -221,13 +221,22 @@ VALUES
 (5,'tel','1133270127'),
 (5,'e-mail','andersonalvessaude@gmail.com');
 
+INSERT INTO paciente 
+(nome, email, celular, cpf, cep, tipoLog, logradouro, numero, cidade, uf, dataNascimento)
+ 
+VALUES
+('João Silva','joao@gmail.com','13999887711','12345678901','11030000','Rua','Afonso Pena','45','Santos','SP','1985-03-15'),
+('Ana Souza','ana@yahoo.com','11988776655','98765432100','11045000','Avenida','Conselheiro Nébias','120','Santos','SP','1992-08-20'),
+('Carlos Mendes','carlos@outlook.com','13997775544','45612378910','11060000','Rua','XV de Novembro','300','Praia Grande','SP','1978-11-02'),
+('Fernanda Lima','fernanda@gmail.com','11996668877','74185296300','11070000','Travessa','Dom Pedro','78','Guarujá','SP','2000-05-28');
+
 /*--consultas--*/
 
-INSERT INTO consulta (idmedico ,idrecepcionista, idpaciente ,
+INSERT INTO consulta (idMedico ,idRecepcionista, idPaciente ,
 dataHoraConsulta,observacao,prescricao,tipoConsulta ,temPlano,valor)
 values
 (4,1,1,'2026-05-04 18:30','Paciente relata dores','','Primeira vez',0,50.00),
-(2,1,3,'2026-05-19 10:30','','','Primeira vez',0,150.00)
+(2,1,3,'2026-05-19 10:30','','','Primeira vez',0,150.00);
  
 INSERT INTO consulta ( idPaciente, idMedico, idRecepcionista, tipoConsulta, valor, dataHoraConsulta, observacao, prescricao, temPlano)
 VALUES (2, 3, 1, 'Primeira vez ', 200.00, '2026-04-30 15:02', 'Vista está ruim' , NULL, 1 )
@@ -245,12 +254,6 @@ VALUES (1,1,1,'2024-06-15 14:30:',
     450.00                   -- valor
 
 );
-
-INSERT INTO consulta 
-(idPaciente, idMedico, idRecepcionista, tipoConsulta, valor, dataHoraConsulta, 
-observacao, prescricao, temPlano)
-VALUES 
-(1, 2, 1, 'Primeira vez', 200.00, '2026-05-10 10:00', 'Dor no peito', NULL, 1);
  
 SELECT * FROM medico
 
@@ -423,4 +426,6 @@ GROUP BY paciente.nome
 HAVING COUNT(*)>=2
 
 SELECT * FROM consulta
+
+
 
